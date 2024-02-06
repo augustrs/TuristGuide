@@ -5,6 +5,8 @@ import com.example.tourism.model.TouristAttraction;
 import com.example.tourism.repository.TouristRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TouristService {
     private TouristRepository touristRepository = new TouristRepository();
@@ -17,4 +19,8 @@ public class TouristService {
     public void deleteTouristAttraction(TouristAttraction touristAttraction) {
         touristRepository.deleteTouristAttractionFromList(touristAttraction);
     }
-}
+    public List<TouristAttraction> getAttractions() {
+            return touristRepository.getAttractions();
+        }
+    }
+

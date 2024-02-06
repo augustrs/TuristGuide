@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public class TouristRepository {
-    List<TouristAttraction> attractions = new ArrayList<>();
+    List<TouristAttraction> attractions = new ArrayList<>(List.of(new TouristAttraction("Det runde tårn","Et højt rundt tårn")));
 
 
     public TouristAttraction createTouristAttraction(String name, String description) {
@@ -34,5 +34,8 @@ public class TouristRepository {
             }
         }
         return searchResult;
+    }
+    public List<TouristAttraction> getAttractions() {
+        return attractions;
     }
 }
