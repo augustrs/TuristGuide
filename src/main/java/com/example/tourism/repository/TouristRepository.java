@@ -12,7 +12,6 @@ public class TouristRepository {
     List<TouristAttraction> attractions = new ArrayList<>();
 
 
-
     public TouristAttraction createTouristAttraction(String name, String description) {
         TouristAttraction touristAttraction = new TouristAttraction(name,description);
         return touristAttraction;
