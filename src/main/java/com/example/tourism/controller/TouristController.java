@@ -33,4 +33,9 @@ public ResponseEntity<List<TouristAttraction>> getAttractions (){
         touristService.deleteTouristAttraction(touristAttraction);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @PostMapping("/update")
+    public ResponseEntity<TouristAttraction> putTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
+        touristService.putTouristAttraction(touristAttraction);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
