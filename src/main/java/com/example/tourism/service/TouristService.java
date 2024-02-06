@@ -14,7 +14,7 @@ public class TouristService {
         touristRepository.addTouristAttraction(attraction);
     }
 
-    public void deleteTouristAttraction(String name) {
-        touristRepository.deleteTouristAttractionFromList(name);
+    public void deleteTouristAttraction(TouristAttraction touristAttraction) {
+        touristRepository.deleteTouristAttractionFromList(touristAttraction);
     }
 }

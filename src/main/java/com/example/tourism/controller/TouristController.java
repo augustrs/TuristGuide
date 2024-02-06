@@ -20,8 +20,8 @@ public class TouristController {
     }
 
     @DeleteMapping("attractions/{name}")
-    public ResponseEntity<Void> deleteTouristAttraction(@RequestBody String name) {
-        touristService.deleteTouristAttraction(name);
+    public ResponseEntity<Void> deleteTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
+        touristService.deleteTouristAttraction(touristAttraction);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

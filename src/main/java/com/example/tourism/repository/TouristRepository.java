@@ -19,14 +19,13 @@ public class TouristRepository {
     public void addTouristAttraction(TouristAttraction touristAttraction) {
         attractions.add(touristAttraction);
     }
-    public void deleteTouristAttractionFromList(String touristAttractionNameString) {
+    public void deleteTouristAttractionFromList(TouristAttraction touristAttraction) {
 
-        if (searchForTouristAttraction(touristAttractionNameString).size() == 1) {
-            attractions.remove(searchForTouristAttraction(touristAttractionNameString).get(0));
+            attractions.remove(touristAttraction);
 
         }
         // TODO add for multiple searchresults
-    }
+
     public List<TouristAttraction> searchForTouristAttraction(String attractionSearchKey) {
         List<TouristAttraction> searchResult = new ArrayList<>();
         for (TouristAttraction attraction : attractions) {
