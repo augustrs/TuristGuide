@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public class TouristRepository {
-    List<TouristAttraction> attractions = new ArrayList<>(List.of(new TouristAttraction("Det runde tårn","Et højt rundt tårn",1)));
+    List<TouristAttraction> attractions = new ArrayList<>(List.of(new TouristAttraction("Det runde tårn","Et højt rundt tårn",1),new TouristAttraction("Den lille havfrue","en havfrue",2)));
 
 
     public TouristAttraction createTouristAttraction(String name, String description) {
@@ -30,6 +30,17 @@ public class TouristRepository {
     public List<TouristAttraction> getAttractions() {
         return attractions;
     }
+    public TouristAttraction getAttractionByName(String name) {
+        int i =0;
+        while (i<attractions.size()) {
+            if (name.equals(attractions.get(i).getName())) {
+                return attractions.get(i);
+            }
+            i++;
+        }
+        return null;
+    }
+
     public TouristAttraction changeTouristAttraction(TouristAttraction touristAttraction) {
         //Overskriv eksisterende message
 

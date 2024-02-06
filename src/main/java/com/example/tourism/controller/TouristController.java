@@ -28,7 +28,7 @@ public ResponseEntity<List<TouristAttraction>> getAttractions (){
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{name}")
+    @DeleteMapping("/delete/{name}")
     public ResponseEntity<Void> deleteTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
         touristService.deleteTouristAttraction(touristAttraction);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -37,5 +37,10 @@ public ResponseEntity<List<TouristAttraction>> getAttractions (){
     public ResponseEntity<TouristAttraction> putTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
         touristService.putTouristAttraction(touristAttraction);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @GetMapping("/{name}")
+    public ResponseEntity<TouristAttraction> getAttractionByName(@PathVariable String name) {
+        TouristAttraction specificAttraction = touristService.getAttractionByName(name);
+        return new ResponseEntity<>(specificAttraction,HttpStatus.OK);
     }
 }
