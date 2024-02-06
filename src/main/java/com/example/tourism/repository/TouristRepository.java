@@ -26,15 +26,7 @@ public class TouristRepository {
         }
         // TODO add for multiple searchresults
 
-    public List<TouristAttraction> searchForTouristAttraction(String attractionSearchKey) {
-        List<TouristAttraction> searchResult = new ArrayList<>();
-        for (TouristAttraction attraction : attractions) {
-            if (attraction.getName().toLowerCase().contains(attractionSearchKey.toLowerCase())) {
-                searchResult.add(attraction);
-            }
-        }
-        return searchResult;
-    }
+
     public List<TouristAttraction> getAttractions() {
         return attractions;
     }
