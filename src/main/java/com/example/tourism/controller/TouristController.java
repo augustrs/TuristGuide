@@ -28,9 +28,9 @@ public ResponseEntity<List<TouristAttraction>> getAttractions (){
     }
 
     @DeleteMapping("/delete/{name}")
-    public ResponseEntity<Void> deleteTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
-        touristService.deleteTouristAttraction(touristAttraction);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<Void> deleteTouristAttraction(@PathVariable String name) {
+        touristService.deleteTouristAttraction(name);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
     @PostMapping("/update")
     public ResponseEntity<TouristAttraction> putTouristAttraction(@RequestBody TouristAttraction touristAttraction) {

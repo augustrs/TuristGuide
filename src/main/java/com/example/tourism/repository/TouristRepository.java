@@ -19,9 +19,21 @@ public class TouristRepository {
     public void addTouristAttraction(TouristAttraction touristAttraction) {
         attractions.add(touristAttraction);
     }
-    public void deleteTouristAttractionFromList(TouristAttraction touristAttraction) {
+    public void deleteTouristAttractionFromList(String name) {
+        int i =0;
+        TouristAttraction foundAttraction=null;
+        while (i<attractions.size()) {
+            if (name.equals(attractions.get(i).getName())) {
+                foundAttraction = attractions.get(i);
+                attractions.remove(foundAttraction);
 
-            attractions.remove(touristAttraction);
+
+            }
+            i++;
+        }
+
+
+
 
         }
         // TODO add for multiple searchresults
@@ -32,13 +44,20 @@ public class TouristRepository {
     }
     public TouristAttraction getAttractionByName(String name) {
         int i =0;
+        TouristAttraction foundAttraction=null;
         while (i<attractions.size()) {
             if (name.equals(attractions.get(i).getName())) {
+                foundAttraction = attractions.get(i);
                 return attractions.get(i);
+
             }
             i++;
         }
+        if (foundAttraction==null)
         return null;
+        else {
+            return foundAttraction;
+        }
     }
 
     public TouristAttraction changeTouristAttraction(TouristAttraction touristAttraction) {
