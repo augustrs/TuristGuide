@@ -250,7 +250,7 @@ footer {
 }
 
 #attraction1 {
-    background-image: url("denbl%C3%A5planet.jpeg");
+    background-image: url("../images/denblåplanet.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 10px;
@@ -260,7 +260,7 @@ footer {
 }
 
 #attraction2 {
-    background-image: url("statensmuseum.jpeg");
+    background-image: url("../images/statensmuseum.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 10px;
@@ -270,7 +270,7 @@ footer {
 }
 
 #attraction3 {
-    background-image: url("glyptoteket.jpeg");
+    background-image: url("../images/glyptoteket.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 10px;
@@ -280,7 +280,7 @@ footer {
 }
 
 #attraction4 {
-    background-image: url("tivoligardens.jpeg");
+    background-image: url("../images/tivoligardens.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 10px;
