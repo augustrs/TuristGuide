@@ -9,8 +9,11 @@ import java.util.List;
 
 @Service
 public class TouristService {
-    private TouristRepository touristRepository = new TouristRepository();
+    private TouristRepository touristRepository;
 
+    public TouristService(TouristRepository touristRepository) {
+        this.touristRepository = new TouristRepository();
+    }
 
     public void addTouristAttraction(TouristAttraction attraction) {
         touristRepository.addTouristAttraction(attraction);
