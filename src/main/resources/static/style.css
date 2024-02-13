@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     background-color: #4d5061;
     background-repeat: no-repeat;
@@ -216,8 +215,8 @@ div.social-links a {
     display: inline-block;
     height: 40px;
     width: 40px;
-    background-color: rgba(255,255,255,0.2);
-    margin:0 10px 10px 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0;
     text-align: center;
     line-height: 40px;
     border-radius: 50%;
@@ -292,7 +291,7 @@ footer {
 div.float-child ul li a {
     text-decoration: none;
     color: #FFF;
-    text-shadow: 3px 4px 7px rgba(81,67,21,0.8);
+    text-shadow: 3px 4px 7px rgba(81, 67, 21, 0.8);
     font-weight: 600;
 }
 

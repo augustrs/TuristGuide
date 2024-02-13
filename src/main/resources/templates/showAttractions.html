@@ -2,26 +2,48 @@
 <html xmlns:th="https://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link th:href="@{/style.css}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link th:href="@{/showAttraction.css}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
     <link rel="icon" href="images/tour-guide.png" type="image/x-icon">
     <title>Find All</title>
 </head>
 <body>
-<h1>TestTest</h1>
-<p th:each="attraction : ${attractionList}">
-    <span th:text="${attraction.name}"></span>
-</p>
+<header>
+    <a href="/">
+        <button type="button" class="btn btn-primary">Home</button>
+    </a>
+    <div class="header">
+        <div class="headlines">
+            <h1 class="headline1">Velkommen til attraktionslisten</h1>
+            <h3 class="headline2">Her finder du alle de smukke attraktioner i København 💅</h3>
+        </div>
+    </div>
+</header>
+
+<div class="attractions" th:each="attraction : ${attractionList}">
+    <p th:text="${attraction.name}" class="attraction-name"></p>
+</div>
+
+
+
+
+
 <footer>
     <div class="footer">
         <div class="col-1">
             <h3 class="footer-header">Contact us</h3>
             <ul class="footer-list">
                 <li><i class="fa fa-phone"></i><a href="tel:+4525611622"> +45 88 88 88 88</a></li>
-                <li><i class="fa fa-envelope"></i><a href="mailto:joakim.bloch@hotmail.com"> turist123@guiden.org</a></li>
+                <li><i class="fa fa-envelope"></i><a href="mailto:joakim.bloch@hotmail.com"> turist123@guiden.org</a>
+                </li>
             </ul>
         </div>
         <div class="col-2">

@@ -9,7 +9,12 @@ import java.util.List;
 
 @Repository
 public class TouristRepository {
-    List<TouristAttraction> attractions = new ArrayList<>(List.of(new TouristAttraction("Det runde tårn","Et højt rundt tårn",1),new TouristAttraction("Den lille havfrue","en havfrue",2)));
+    List<TouristAttraction> attractions = new ArrayList<>(List.of(
+            new TouristAttraction("Det runde tårn", "Et højt rundt tårn",1),
+            new TouristAttraction("Den blå planet", "En blå planet",2),
+            new TouristAttraction("Københavns Zoologiske have", "Et sted fyldt med dyr",3),
+            new TouristAttraction("Operahuset", "Et koncerthus",4),
+            new TouristAttraction("Den lille havfrue", "en havfrue",5)));
 
 
     public TouristAttraction createTouristAttraction(String name, String description) {
