@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Find All</title>
+</head>
+<body>
+<h1>TestTest</h1>
+<p th:each="attraction : ${attractionList}">
+    <span th:text="${attraction.name}"></span>
+</p>
+
+</body>
+</html>

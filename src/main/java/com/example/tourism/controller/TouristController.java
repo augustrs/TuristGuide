@@ -5,6 +5,7 @@ import com.example.tourism.service.TouristService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,10 +19,12 @@ public class TouristController {
         this.touristService = touristService;
     }
 
-    @GetMapping()
-public ResponseEntity<List<TouristAttraction>> getAttractions (){
+
+    @GetMapping("/showAll")
+public String getAttractions (Model model){
         List<TouristAttraction> attractions = touristService.getAttractions();
-        return new ResponseEntity<>(attractions,HttpStatus.OK);
+        model.addAttribute("attractionList",attractions);
+        return "showAttractions";
     }
 
     @PostMapping("/add")
