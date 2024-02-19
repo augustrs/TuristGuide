@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+
+  <link th:href="@{/showAttraction.css}" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+  <link rel="icon" href="../static/images/tour-guide.png" type="image/x-icon">
+  <title>Find All</title>
+</head>
+<body>
+<header>
+  <nav>
+    <ul class="topnav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/attractions/showAll">Show Attractions</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="header">
+    <div class="headlines">
+      <h1 class="headline1">Velkommen til attraktionslisten</h1>
+      <h3 class="headline2">Her finder du alle de smukke attraktioner i København 💅</h3>
+    </div>
+  </div>
+</header>
+<div class="container mt-4">
+  <form th:action="@{/attractions/update}" th:object="${touristAttraction}" method="post">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" th:field="*{name}" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input type="text" class="form-control" id="description" th:field="*{description}" required>
+    </div>
+    <div class="mb-3">
+      <label for="id" class="form-label">ID</label>
+      <input type="text" class="form-control" id="id" th:field="*{id}" readonly>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+
+<footer>
+  <!-- Your existing footer content -->
+</footer>
+</body>
+</html>

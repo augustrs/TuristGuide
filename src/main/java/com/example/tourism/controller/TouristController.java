@@ -18,7 +18,17 @@ public class TouristController {
     public TouristController(TouristService touristService) {
         this.touristService = touristService;
     }
-
+    @GetMapping("/update/{name}")
+    public String showUpdateAttractionForm(@PathVariable String name, Model model) {
+        TouristAttraction attraction = touristService.getAttractionByName(name);
+        model.addAttribute("touristAttraction", attraction);
+        return "updateAttraction";
+    }
+    @PostMapping("/update")
+    public String updateTouristAttraction(@ModelAttribute TouristAttraction touristAttraction) {
+        touristService.putTouristAttraction(touristAttraction);
+        return "redirect:/attractions/showAll";
+    }
 
     @GetMapping("/add")
     public String showAddAttractionForm(Model model) {
@@ -48,11 +58,15 @@ public String getAttractions (Model model){
         return "redirect:/attractions/showAll";
     }
 
+    /*
     @PostMapping("/update")
+
     public ResponseEntity<TouristAttraction> putTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
         touristService.putTouristAttraction(touristAttraction);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+     */
     @GetMapping("/{name}")
     public ResponseEntity<TouristAttraction> getAttractionByName(@PathVariable String name) {
         TouristAttraction specificAttraction = touristService.getAttractionByName(name);
