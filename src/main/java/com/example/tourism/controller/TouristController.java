@@ -46,6 +46,7 @@ public String getAttractions (Model model){
         touristService.deleteTouristAttraction(name);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
     @PostMapping("/update")
     public ResponseEntity<TouristAttraction> putTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
         touristService.putTouristAttraction(touristAttraction);
