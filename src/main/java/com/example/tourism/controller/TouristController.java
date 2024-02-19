@@ -19,6 +19,18 @@ public class TouristController {
         this.touristService = touristService;
     }
 
+    @GetMapping("/add")
+    public String showAddAttractionForm(Model model) {
+        TouristAttraction defaultAttraction = new TouristAttraction("name","description", 0);
+        model.addAttribute("touristAttraction",defaultAttraction);
+        return "addAttraction";
+    }
+    @PostMapping("/add")
+    public String addTouristAttraction(@ModelAttribute TouristAttraction touristAttraction) {
+        touristService.addTouristAttraction(touristAttraction);
+        return "redirect:/attractions/showAll";
+    }
+
 
     @GetMapping("/showAll")
 public String getAttractions (Model model){
@@ -27,11 +39,7 @@ public String getAttractions (Model model){
         return "showAttractions";
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<Void> addTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
-        touristService.addTouristAttraction(touristAttraction);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
+
 
     @DeleteMapping("/delete/{name}")
     public ResponseEntity<Void> deleteTouristAttraction(@PathVariable String name) {
@@ -47,5 +55,8 @@ public String getAttractions (Model model){
     public ResponseEntity<TouristAttraction> getAttractionByName(@PathVariable String name) {
         TouristAttraction specificAttraction = touristService.getAttractionByName(name);
         return new ResponseEntity<>(specificAttraction,HttpStatus.OK);
+
     }
+
+
 }
