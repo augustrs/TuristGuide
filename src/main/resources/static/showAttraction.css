@@ -28,7 +28,7 @@ body {
 .headline2 {
     font-size: 2rem;
     margin: 20px 0;
-    padding-bottom: 30px;
+    padding-bottom: 5px;
     font-weight: 200;
 }
 
@@ -125,9 +125,35 @@ body {
     color: #818AA3;
 }
 
+nav {
+    display: block;
+    width: 100%;
+    margin: 0;
+}
 
+nav ul {
+    background-color: #eee;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
 
+ul.topnav li {
+    list-style: none;
+    float: left;
+}
 
+ul.topnav li a {
+    color: #666;
+    display: block;
+    text-decoration: none;
+    min-height: 16px;
+    text-align: center;
+    padding: 14px;
+    text-transform: uppercase;
+}
 
-
-
+ul.topnav li a:hover {
+    background-color: #0080ff;
+    color: #FFF;
+}
