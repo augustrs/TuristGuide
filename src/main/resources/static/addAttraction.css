@@ -1,0 +1,127 @@
+nav {
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+nav ul {
+    background-color: #eee;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+ul.topnav li {
+    list-style: none;
+    float: left;
+}
+
+ul.topnav li a {
+    color: #666;
+    display: block;
+    text-decoration: none;
+    min-height: 16px;
+    text-align: center;
+    padding: 14px;
+    text-transform: uppercase;
+}
+
+ul.topnav li a:hover {
+    background-color: #0080ff;
+    color: #FFF;
+}
+
+div.col-1 ul {
+    list-style: none;
+    text-decoration: none;
+}
+
+ul.footer-list li {
+    list-style: none;
+    text-decoration: none;
+    margin: 10px;
+}
+
+ul.footer-list li a {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.5s ease;
+}
+
+ul.footer-list li i {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 7px;
+}
+
+div.col-1 {
+    width: 25%;
+    float: left;
+    padding: 0 15px;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 250px;
+    font-weight: 200;
+    display: block;
+    border-left: 2px solid red;
+}
+
+div.col-2 {
+    margin-top: -2px;
+    width: 50%;
+    float: left;
+    padding: 0 15px;
+    font-size: 30px;
+    display: block;
+}
+
+h3.footer-header {
+    padding-left: 7px;
+}
+
+h3, h4 {
+    color: #fff;
+}
+
+div.social-links h4 {
+    font-size: 22px;
+    padding: 15px;
+    margin-top: -12px;
+}
+
+div.social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+}
+
+div.footer {
+    height: 110px;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+}
+
+ul.footer-list li a:hover {
+    color: #818AA3;
+    padding-left: 8px;
+    transition: all 0.5s ease;
+}
+
+div.social-links a:hover {
+    color: #818AA3;
+}
+
+footer {
+    background-color: #30323d;
+    padding: 20px;
+    top: 100%;
+    position: sticky;
+}

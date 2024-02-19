@@ -3,9 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/addAttraction.css}" rel="stylesheet">
+
+    <link rel="icon" href="../static/images/tour-guide.png" type="image/x-icon">
     <title>Add Tourist Attraction</title>
+
 </head>
 <body>
+
+<header>
+    <nav>
+        <ul class="topnav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/attractions/showAll">Show Attractions</a></li>
+            <li><a href="/attractions/add">Add Attraction</a></li>
+        </ul>
+    </nav>
+</header>
+
 <h2>Add Tourist Attraction</h2>
 <form th:action="@{/attractions/add}" th:object="${touristAttraction}" method="post">
     <label>Name: <input type="text" th:field="*{name}" required/></label><br>
@@ -13,5 +28,27 @@
     <label>id: <input type="number" th:field="*{id}" required/></label><br>
     <input type="submit" value="Add Attraction">
 </form>
+
+<footer>
+    <div class="footer">
+        <div class="col-1">
+            <h3 class="footer-header">Contact us</h3>
+            <ul class="footer-list">
+                <li><i class="fa fa-phone"></i><a href="tel:+4525611622"> +45 88 88 88 88</a></li>
+                <li><i class="fa fa-envelope"></i><a href="mailto:joakim.bloch@hotmail.com"> turist123@guiden.org</a></li>
+            </ul>
+        </div>
+        <div class="col-2">
+            <div class="social-links">
+                <h4 class="footer-header">Find us on</h4>
+                <a href="https://github.com/"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
 </body>
 </html>
