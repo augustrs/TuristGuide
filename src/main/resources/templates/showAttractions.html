@@ -30,6 +30,10 @@
 
 <div class="attractions" th:each="attraction : ${attractionList}">
     <p th:text="${attraction.name}" class="attraction-name"></p>
+    <form th:action="@{'/attractions/delete/' + ${attraction.name}}" method="post">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+
 </div>
 
 
