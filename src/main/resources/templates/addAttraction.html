@@ -31,6 +31,12 @@
     <label>Name: <input type="text" th:field="*{name}" required/></label><br>
     <label>Description: <input type="text" th:field="*{description}" required></label><br>
     <label>id: <input type="number" th:field="*{id}" required/></label><br>
+    <label>Tags:</label><br>
+    <label><input type="checkbox" th:field="*{tags}" value="Børn"/> Børn</label>
+    <label><input type="checkbox" th:field="*{tags}" value="Turist"/> Turist</label>
+    <label><input type="checkbox" th:field="*{tags}" value="Sjov"/> Sjov</label>
+    <label><input type="checkbox" th:field="*{tags}" value="Eventyr"/> Eventyr</label>
+    <label><input type="checkbox" th:field="*{tags}" value="By"/> By</label><br>
     <input type="submit" value="Add Attraction">
 </form>
 
