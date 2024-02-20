@@ -58,11 +58,7 @@ public class TouristRepository {
             }
             i++;
         }
-        if (foundAttraction==null)
-        return null;
-        else {
-            return foundAttraction;
-        }
+        return foundAttraction;
     }
 
     public TouristAttraction changeTouristAttraction(TouristAttraction touristAttraction) {

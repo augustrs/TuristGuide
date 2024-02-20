@@ -58,15 +58,6 @@ public String getAttractions (Model model){
         return "redirect:/attractions/showAll";
     }
 
-    /*
-    @PostMapping("/update")
-
-    public ResponseEntity<TouristAttraction> putTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
-        touristService.putTouristAttraction(touristAttraction);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-     */
     @GetMapping("/{name}")
     public ResponseEntity<TouristAttraction> getAttractionByName(@PathVariable String name) {
         TouristAttraction specificAttraction = touristService.getAttractionByName(name);
