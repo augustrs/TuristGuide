@@ -26,7 +26,7 @@ public class TouristRepository {
     }
     public void deleteTouristAttractionFromList(String name) {
         int i =0;
-        TouristAttraction foundAttraction=null;
+        TouristAttraction foundAttraction;
         while (i<attractions.size()) {
             if (name.equals(attractions.get(i).getName())) {
                 foundAttraction = attractions.get(i);
@@ -52,13 +52,12 @@ public class TouristRepository {
         TouristAttraction foundAttraction=null;
         while (i<attractions.size()) {
             if (name.equals(attractions.get(i).getName())) {
-                foundAttraction = attractions.get(i);
                 return attractions.get(i);
 
             }
             i++;
         }
-        return foundAttraction;
+        return null;
     }
 
     public TouristAttraction changeTouristAttraction(TouristAttraction touristAttraction) {
