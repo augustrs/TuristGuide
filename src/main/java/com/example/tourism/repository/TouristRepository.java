@@ -10,15 +10,15 @@ import java.util.List;
 @Repository
 public class TouristRepository {
     List<TouristAttraction> attractions = new ArrayList<>(List.of(
-            new TouristAttraction("Det runde tårn", "Et højt rundt tårn",1),
-            new TouristAttraction("Den blå planet", "En blå planet",2),
-            new TouristAttraction("Københavns Zoologiske have", "Et sted fyldt med dyr",3),
-            new TouristAttraction("Operahuset", "Et koncerthus",4),
-            new TouristAttraction("Den lille havfrue", "en havfrue",5)));
+            new TouristAttraction("Det runde tårn", "Et højt rundt tårn",1, List.of("Bygning")),
+            new TouristAttraction("Den blå planet", "En blå planet",2, List.of("fisk")),
+            new TouristAttraction("Københavns Zoologiske have", "Et sted fyldt med dyr",3, List.of("Dyr")),
+            new TouristAttraction("Operahuset", "Et koncerthus",4, List.of("Musik")),
+            new TouristAttraction("Den lille havfrue", "en havfrue",5, List.of("Statue"))));
 
 
-    public TouristAttraction createTouristAttraction(String name, String description) {
-        TouristAttraction touristAttraction = new TouristAttraction(name,description,attractions.size()+1);
+    public TouristAttraction createTouristAttraction(String name, String description, List<String> tags) {
+        TouristAttraction touristAttraction = new TouristAttraction(name,description,attractions.size()+1, tags);
         return touristAttraction;
     }
     public void addTouristAttraction(TouristAttraction touristAttraction) {
@@ -58,6 +58,23 @@ public class TouristRepository {
             i++;
         }
         return null;
+    }
+
+    public List<String> getTagsForAttraction(String name) {
+        TouristAttraction attraction = getAttractionByName(name);
+        if (attraction != null) {
+            return attraction.getTags();
+        } else
+            return null;
+
+    }
+
+    public List<String> getTags() {
+        List<String> tags = new ArrayList<>();
+        for (TouristAttraction attraction : attractions) {
+            tags.addAll(attraction.getTags());
+        }
+        return tags;
     }
 
     public TouristAttraction changeTouristAttraction(TouristAttraction touristAttraction) {

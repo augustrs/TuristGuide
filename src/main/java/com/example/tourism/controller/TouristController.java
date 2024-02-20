@@ -32,7 +32,7 @@ public class TouristController {
 
     @GetMapping("/add")
     public String showAddAttractionForm(Model model) {
-        TouristAttraction defaultAttraction = new TouristAttraction("name","description", 0);
+        TouristAttraction defaultAttraction = new TouristAttraction("name","description", 0, List.of("tags"));
         model.addAttribute("touristAttraction",defaultAttraction);
         return "addAttraction";
     }
@@ -50,7 +50,12 @@ public String getAttractions (Model model){
         return "showAttractions";
     }
 
-
+    @GetMapping("/tags/{name}")
+    public String showAttractionTags(@PathVariable String name, Model model) {
+        List<String> tags = touristService.getTagsForAttraction(name);
+        model.addAttribute("tags", tags);
+        return "tags";
+    }
 
     @PostMapping ("/delete/{name}")
     public String deleteTouristAttraction(@PathVariable String name) {
