@@ -10,15 +10,15 @@ import java.util.List;
 @Repository
 public class TouristRepository {
     List<TouristAttraction> attractions = new ArrayList<>(List.of(
-            new TouristAttraction("Det runde tårn", "Et højt rundt tårn",1, List.of("Bygning")),
-            new TouristAttraction("Den blå planet", "En blå planet",2, List.of("fisk")),
-            new TouristAttraction("Københavns Zoologiske have", "Et sted fyldt med dyr",3, List.of("Dyr")),
-            new TouristAttraction("Operahuset", "Et koncerthus",4, List.of("Musik")),
-            new TouristAttraction("Den lille havfrue", "en havfrue",5, List.of("Statue"))));
+            new TouristAttraction("Det runde tårn", "Et højt rundt tårn", List.of("Bygning")),
+            new TouristAttraction("Den blå planet", "En blå planet", List.of("fisk")),
+            new TouristAttraction("Københavns Zoologiske have", "Et sted fyldt med dyr", List.of("Dyr")),
+            new TouristAttraction("Operahuset", "Et koncerthus", List.of("Musik")),
+            new TouristAttraction("Den lille havfrue", "en havfrue", List.of("Statue"))));
 
 
     public TouristAttraction createTouristAttraction(String name, String description, List<String> tags) {
-        TouristAttraction touristAttraction = new TouristAttraction(name,description,attractions.size()+1, tags);
+        TouristAttraction touristAttraction = new TouristAttraction(name,description, tags);
         return touristAttraction;
     }
     public void addTouristAttraction(TouristAttraction touristAttraction) {

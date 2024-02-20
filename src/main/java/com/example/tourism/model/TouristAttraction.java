@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TouristAttraction {
-    private int id;
     private String name;
     private String description;
     private List<String> tags = new ArrayList<>();
 
-    public TouristAttraction(String name, String description, int id, List<String> tags) {
-        this.id = id;
+    public TouristAttraction(String name, String description,  List<String> tags) {
         this.name = name;
         this.description = description;
         this.tags = tags;
@@ -24,9 +22,7 @@ public class TouristAttraction {
         return description;
     }
 
-    public int getId() {
-        return id;
-    }
+
 
     public List<String> getTags() {
         return tags;
@@ -35,7 +31,6 @@ public class TouristAttraction {
     @Override
     public String toString() {
         return "TouristAttraction" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", tags=" + tags;
