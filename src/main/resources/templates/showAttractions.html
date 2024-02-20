@@ -39,6 +39,9 @@
     <form th:action="@{'/attractions/delete/' + ${attraction.name}}" method="post">
         <button type="submit" class="btn btn-danger">Delete</button>
     </form>
+    <form th:action="@{'/attractions/tags/' + ${attraction.name}}" method="get">
+        <button type="submit" class="btn btn-primary">Tags</button>
+    </form>
 
 </div>
 

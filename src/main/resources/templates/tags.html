@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Tags</title>
 </head>
 <body>
-<div class="attractions" th:each="attraction : ${attractionList}">
-    <p th:text="${attraction.tags}" class="attraction-tags"></p>
+<h1>Tags</h1>
+<div class="attraction-header">
+    <h2 class="headline2" th:text="'Tags for ' + ${name}"></h2>
+    <table>
+        <tr th:each="tag : ${tags}">
+            <td th:text="${tag}"></td>
+        </tr>
+    </table>
 </div>
 
 </body>
