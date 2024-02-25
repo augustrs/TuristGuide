@@ -26,7 +26,7 @@ public class TouristController {
     }
     @PostMapping("/update")
     public String updateTouristAttraction(@ModelAttribute TouristAttraction touristAttraction) {
-        touristService.putTouristAttraction(touristAttraction);
+        touristService.updateAttraction(touristAttraction);
         return "redirect:/attractions/showAll";
     }
 

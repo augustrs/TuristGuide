@@ -77,11 +77,19 @@ public class TouristRepository {
         return tags;
     }
 
-    public TouristAttraction changeTouristAttraction(TouristAttraction touristAttraction) {
+    public void changeTouristAttraction(TouristAttraction updateAttraction) {
         //Overskriv eksisterende message
+        for (TouristAttraction touristAttraction : attractions) {
+            if (touristAttraction.getName().equals(updateAttraction.getName())) {
+                touristAttraction.setDescription(updateAttraction.getDescription());
+                touristAttraction.setTags(updateAttraction.getTags());
+            }
 
+
+        }
 
         // find attraction i attractions
+        /*
         int i=0;
         while (i < attractions.size()) {
             if (touristAttraction.getId()==attractions.get(i).getId()){
@@ -89,9 +97,12 @@ public class TouristRepository {
             return touristAttraction;
             }
             i++;
-        }
-        return null; // ikke fundet
+
+         */
+       // }return null; // ikke fundet
 
     }
+
+
 
 }
