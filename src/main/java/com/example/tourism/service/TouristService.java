@@ -40,6 +40,10 @@ public class TouristService {
     public List<String> getTagsForAttraction(String name){
         return touristRepository.getTagsForAttraction(name);
     }
+
+    public List<String> getTags() {
+        return touristRepository.getTags();
+    }
 }
 
 
