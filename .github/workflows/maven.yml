@@ -31,7 +31,8 @@ jobs:
       run: mvn -B test
 
 
-      qodana:
+
+  qodana:
         needs: build
         runs-on: ubuntu-latest
         steps:
