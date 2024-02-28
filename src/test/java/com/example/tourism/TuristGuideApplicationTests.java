@@ -18,10 +18,11 @@ class TuristGuideApplicationTests {
 
     @Autowired
     private TouristService service;
+    @Autowired
     private TouristRepository repository;
 
 
-    /*
+
     @Test
     void contextLoads() {
         assertThat(controller).isNotNull();
@@ -29,7 +30,7 @@ class TuristGuideApplicationTests {
         assertThat(repository).isNotNull();
     }
 
-     */
+
 
 
 
