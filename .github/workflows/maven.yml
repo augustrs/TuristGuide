@@ -18,7 +18,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    permissions:
+        checks: write
+        contents: read
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 21
@@ -29,12 +31,16 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B test
+    - name: Publish Test Report
+    if: succes() || failure()
+    uses: scacap/action-sunfire-report@v1
 
 
 
   qodana:
         needs: build
         runs-on: ubuntu-latest
+
         steps:
           - uses: actions/checkout@v3
             with:
