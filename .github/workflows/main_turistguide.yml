@@ -5,8 +5,9 @@ name: Build and deploy JAR app to Azure Web App - turistguide
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
