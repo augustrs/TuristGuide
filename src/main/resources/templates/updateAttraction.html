@@ -34,13 +34,25 @@
 </header>
 <div class="container mt-4">
   <form th:action="@{/attractions/update}" th:object="${touristAttraction}" method="post">
+    <!-- Input field for the name -->
     <div class="mb-3">
       <label for="name" class="form-label">Name</label>
       <input type="text" class="form-control" id="name" th:field="*{name}" required>
     </div>
+
+    <!-- Input field for the description -->
     <div class="mb-3">
       <label for="description" class="form-label">Description</label>
       <input type="text" class="form-control" id="description" th:field="*{description}" required>
+    </div>
+
+    <!-- Multi-select dropdown for tags -->
+    <div class="mb-3">
+      <label for="tags" class="form-label">Tags</label>
+      <select multiple class="form-select" id="tags" th:field="*{tags}">
+        <!-- Populate options dynamically based on available tags -->
+        <option th:each="tag : ${allTags}" th:value="${tag}" th:text="${tag}"></option>
+      </select>
     </div>
 
     <button type="submit" class="btn btn-primary">Update</button>
