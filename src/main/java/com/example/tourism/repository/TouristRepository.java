@@ -2,6 +2,7 @@ package com.example.tourism.repository;
 
 
 import com.example.tourism.model.TouristAttraction;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -9,6 +10,17 @@ import java.util.List;
 
 @Repository
 public class TouristRepository {
+
+
+
+
+    @Value("${spring.datasource.url}")
+            private String db_url;
+    @Value("${spring.datasource.username}")
+            private String username;
+     @Value("${spring.datasource.password}")
+            private String pwd;
+
     List<TouristAttraction> attractions = new ArrayList<>(List.of(
             new TouristAttraction("Det runde tårn", "Et højt rundt tårn", List.of("Bygning")),
             new TouristAttraction("Den blå planet", "En blå planet", List.of("fisk")),
