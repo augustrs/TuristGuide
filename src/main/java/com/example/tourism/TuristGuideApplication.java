@@ -11,8 +11,9 @@ public class TuristGuideApplication {
 
 
     public static void main(String[] args) throws SQLException {
-        SpringApplication.run(TuristGuideApplication.class, args);
         TouristRepository tr = new TouristRepository();
         tr.testMethod(); //TEST
+        SpringApplication.run(TuristGuideApplication.class, args);
+
     }
 }
