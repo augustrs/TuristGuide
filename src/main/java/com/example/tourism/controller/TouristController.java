@@ -13,13 +13,17 @@ import java.util.Collections;
 import java.util.List;
 
 @Controller
-
 @RequestMapping("/attractions")
 public class TouristController {
     private TouristService touristService;
 
     public TouristController(TouristService touristService) {
         this.touristService = touristService;
+    }
+    @GetMapping("/test")
+    public String testTheDb() throws SQLException {
+        touristService.testMethod();
+        return "redirect:/attractions/showAll";
     }
 
     @GetMapping("/update/{name}")
@@ -56,9 +60,8 @@ public class TouristController {
 
 
     @GetMapping("/showAll")
-public String getAttractions (Model model) throws SQLException {
+    public String getAttractions (Model model) {
         List<TouristAttraction> attractions = touristService.getAttractions();
-        touristService.testMethod();
         model.addAttribute("attractionList",attractions);
         return "showAttractions";
     }
