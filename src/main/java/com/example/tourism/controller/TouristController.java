@@ -21,7 +21,7 @@ public class TouristController {
         this.touristService = touristService;
     }
     @GetMapping("/test")
-    public String testTheDb() throws SQLException {
+    public String testTheDb() {
         touristService.testMethod();
         return "redirect:/attractions/showAll";
     }

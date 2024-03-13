@@ -24,12 +24,14 @@ public class TouristRepository {
 
 
 
-    public void testMethod() throws SQLException {
-try (Connection con = DriverManager.getConnection(db_url,username,pwd)) {
-    String SQL = "Insert into DEPT (DEPTNO,DNAME,LOC) values (20,'DET','VIRKER');";
+    public void testMethod()  {
+ try (Connection con = DriverManager.getConnection(db_url,username,pwd)) {
+    String SQL = "INSERT INTO DEPT (DEPTNO,DNAME,LOC) values (20,'DET','VIRKER');";
     PreparedStatement pstmt = con.prepareStatement(SQL);
     pstmt.executeUpdate();
-        }
+        } catch (SQLException e) {
+     throw new RuntimeException(e);
+ }
     }
 
     List<TouristAttraction> attractions = new ArrayList<>(List.of(
