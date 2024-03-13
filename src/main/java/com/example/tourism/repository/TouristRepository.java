@@ -5,6 +5,7 @@ import com.example.tourism.model.TouristAttraction;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,15 @@ public class TouristRepository {
      @Value("${spring.datasource.password}")
             private String pwd;
 
+
+
+    public void testMethod() throws SQLException {
+try (Connection con = DriverManager.getConnection(db_url,username,pwd)) {
+    String SQL = "DROP test_db;";
+    PreparedStatement pstmt = con.prepareStatement(SQL);
+    pstmt.executeUpdate();
+        }
+    }
     List<TouristAttraction> attractions = new ArrayList<>(List.of(
             new TouristAttraction("Det runde tårn", "Et højt rundt tårn", List.of("Bygning")),
             new TouristAttraction("Den blå planet", "En blå planet", List.of("fisk")),
