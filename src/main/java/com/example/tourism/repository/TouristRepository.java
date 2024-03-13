@@ -24,13 +24,11 @@ public class TouristRepository {
 
 
 
-    public String testMethod() throws SQLException {
+    public void testMethod() throws SQLException {
 try (Connection con = DriverManager.getConnection(db_url,username,pwd)) {
-    String SQL = "SELECT * from dept;";
+    String SQL = "Insert into DEPT (DEPTNO,DNAME,LOC) values (20,'DET','VIRKER');";
     PreparedStatement pstmt = con.prepareStatement(SQL);
-    ResultSet rs = pstmt.executeQuery();
-    rs.next();
-    return rs.getString(1);
+    pstmt.executeUpdate();
         }
     }
 

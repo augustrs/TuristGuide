@@ -16,8 +16,8 @@ public class TouristService {
     public TouristService(TouristRepository touristRepository) {
         this.touristRepository =touristRepository;
     }
-    public String testMethod() throws SQLException {
-        return touristRepository.testMethod();
+    public void testMethod() throws SQLException {
+        touristRepository.testMethod();
     }
 
     public void addTouristAttraction(TouristAttraction attraction) {

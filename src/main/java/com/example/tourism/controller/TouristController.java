@@ -58,9 +58,8 @@ public class TouristController {
     @GetMapping("/showAll")
 public String getAttractions (Model model) throws SQLException {
         List<TouristAttraction> attractions = touristService.getAttractions();
-        String testString = touristService.testMethod();
+        touristService.testMethod();
         model.addAttribute("attractionList",attractions);
-        model.addAttribute("testString", testString);
         return "showAttractions";
     }
 
