@@ -14,13 +14,12 @@ public class TouristRepository {
 
 
 
-
     @Value("${spring.datasource.url}")
-            private String db_url;
+    private String db_url;
     @Value("${spring.datasource.username}")
-            private String username;
-     @Value("${spring.datasource.password}")
-            private String pwd;
+    private String username;
+    @Value("${spring.datasource.password}")
+    private String pwd;
 
 
 
