@@ -24,13 +24,16 @@ public class TouristRepository {
 
 
 
-    public void testMethod() throws SQLException {
+    public String testMethod() throws SQLException {
 try (Connection con = DriverManager.getConnection(db_url,username,pwd)) {
-    String SQL = "DROP test_db;";
+    String SQL = "SELECT * from dept;";
     PreparedStatement pstmt = con.prepareStatement(SQL);
-    pstmt.executeUpdate();
+    ResultSet rs = pstmt.executeQuery();
+    rs.next();
+    return rs.getString(1);
         }
     }
+
     List<TouristAttraction> attractions = new ArrayList<>(List.of(
             new TouristAttraction("Det runde tårn", "Et højt rundt tårn", List.of("Bygning")),
             new TouristAttraction("Den blå planet", "En blå planet", List.of("fisk")),

@@ -8,10 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 
 @Controller
+
 @RequestMapping("/attractions")
 public class TouristController {
     private TouristService touristService;
@@ -19,6 +21,7 @@ public class TouristController {
     public TouristController(TouristService touristService) {
         this.touristService = touristService;
     }
+
     @GetMapping("/update/{name}")
     public String showUpdateAttractionForm(@PathVariable String name, Model model) {
         TouristAttraction attraction = touristService.getAttractionByName(name);
@@ -53,9 +56,11 @@ public class TouristController {
 
 
     @GetMapping("/showAll")
-public String getAttractions (Model model){
+public String getAttractions (Model model) throws SQLException {
         List<TouristAttraction> attractions = touristService.getAttractions();
+        String testString = touristService.testMethod();
         model.addAttribute("attractionList",attractions);
+        model.addAttribute("testString", testString);
         return "showAttractions";
     }
 
