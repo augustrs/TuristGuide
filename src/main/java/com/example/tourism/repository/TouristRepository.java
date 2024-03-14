@@ -25,7 +25,7 @@ public class TouristRepository {
 
     public void testMethod() {
         try (Connection con = DriverManager.getConnection(db_url,username,pwd)) {
-            String SQL = "INSERT INTO DEPT (DEPTNO,DNAME,LOC) VALUES (100,'DET','VIRKER')";
+            String SQL = "INSERT INTO DEPT (DEPTNO,DNAME,LOC) VALUES (70,'DET','VIRKER')";
             PreparedStatement pstmt = con.prepareStatement(SQL);
             pstmt.executeUpdate();
         } catch (SQLException e) {
