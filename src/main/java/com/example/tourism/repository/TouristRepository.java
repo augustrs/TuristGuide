@@ -12,18 +12,18 @@ import java.util.List;
 @Repository
 public class TouristRepository {
 
-
+/*
     @Value("${spring.datasource.url}")
     private String db_url;
     @Value("${spring.datasource.username}")
     private String username;
     @Value("${spring.datasource.password}")
     private String pwd;
-
+*/
 
     public void testMethod() {
         try (Connection con = DriverManager.getConnection("jdbc:mysql://turistguidesql.mysql.database.azure.com/test_db", "turistguidesql", "Joakimerdum1")) {
-            String SQL = "INSERT INTO DEPT (DEPTNO,DNAME,LOC) VALUES (70,'DET','VIRKER')";
+            String SQL = "INSERT INTO DEPT (DEPTNO,DNAME,LOC) VALUES (17,'NU','VIRKER')";
             PreparedStatement pstmt = con.prepareStatement(SQL);
             pstmt.executeUpdate();
         } catch (SQLException e) {
