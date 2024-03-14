@@ -24,8 +24,8 @@ public class TouristRepository {
 
 
     public void testMethod() {
-        try (Connection con = DriverManager.getConnection("jdbc:mysql://turistguidesql.mysql.database.azure.com/test_dp", "turistguidesql", "Joakimerdum1")) {
-            String SQL = "INSERT INTO DEPT (DEPTNO,DNAME,LOC) VALUES (20,'DET','VIRKER')";
+        try (Connection con = DriverManager.getConnection(db_url,username,pwd)) {
+            String SQL = "INSERT INTO DEPT (DEPTNO,DNAME,LOC) VALUES (100,'DET','VIRKER')";
             PreparedStatement pstmt = con.prepareStatement(SQL);
             pstmt.executeUpdate();
         } catch (SQLException e) {
