@@ -23,15 +23,16 @@ public class TouristRepository {
 
 
 
-    public void testMethod()  {
- try (Connection con = DriverManager.getConnection("turistguidesql.mysql.database.azure.com","turistguidesql","Joakimerdum1")) {
-    String SQL = "INSERT INTO DEPT (DEPTNO,DNAME,LOC) values (20,'DET','VIRKER');";
-    PreparedStatement pstmt = con.prepareStatement(SQL);
-    pstmt.executeUpdate();
+    public void testMethod() {
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://turistguidesql.mysql.database.azure.com/test_dp", "turistguidesql", "Joakimerdum1")) {
+            String SQL = "INSERT INTO DEPT (DEPTNO,DNAME,LOC) VALUES (20,'DET','VIRKER')";
+            PreparedStatement pstmt = con.prepareStatement(SQL);
+            pstmt.executeUpdate();
         } catch (SQLException e) {
-     throw new RuntimeException(e);
- }
+            throw new RuntimeException(e);
+        }
     }
+
 
     List<TouristAttraction> attractions = new ArrayList<>(List.of(
             new TouristAttraction("Det runde tårn", "Et højt rundt tårn", List.of("Bygning")),
