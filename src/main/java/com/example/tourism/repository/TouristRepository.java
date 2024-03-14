@@ -13,7 +13,6 @@ import java.util.List;
 public class TouristRepository {
 
 
-
     @Value("${spring.datasource.url}")
     private String db_url;
     @Value("${spring.datasource.username}")
@@ -22,9 +21,8 @@ public class TouristRepository {
     private String pwd;
 
 
-
     public void testMethod() {
-        try (Connection con = DriverManager.getConnection(db_url,username,pwd)) {
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://turistguidesql.mysql.database.azure.com/test_db", "turistguidesql", "Joakimerdum1")) {
             String SQL = "INSERT INTO DEPT (DEPTNO,DNAME,LOC) VALUES (70,'DET','VIRKER')";
             PreparedStatement pstmt = con.prepareStatement(SQL);
             pstmt.executeUpdate();
@@ -43,16 +41,18 @@ public class TouristRepository {
 
 
     public TouristAttraction createTouristAttraction(String name, String description, List<String> tags) {
-        TouristAttraction touristAttraction = new TouristAttraction(name,description, tags);
+        TouristAttraction touristAttraction = new TouristAttraction(name, description, tags);
         return touristAttraction;
     }
+
     public void addTouristAttraction(TouristAttraction touristAttraction) {
         attractions.add(touristAttraction);
     }
+
     public void deleteTouristAttractionFromList(String name) {
-        int i =0;
+        int i = 0;
         TouristAttraction foundAttraction;
-        while (i<attractions.size()) {
+        while (i < attractions.size()) {
             if (name.equals(attractions.get(i).getName())) {
                 foundAttraction = attractions.get(i);
                 attractions.remove(foundAttraction);
@@ -63,19 +63,18 @@ public class TouristRepository {
         }
 
 
-
-
-        }
-        // TODO add for multiple searchresults
+    }
+    // TODO add for multiple searchresults
 
 
     public List<TouristAttraction> getAttractions() {
         return attractions;
     }
+
     public TouristAttraction getAttractionByName(String name) {
-        int i =0;
-        TouristAttraction foundAttraction=null;
-        while (i<attractions.size()) {
+        int i = 0;
+        TouristAttraction foundAttraction = null;
+        while (i < attractions.size()) {
             if (name.equals(attractions.get(i).getName())) {
                 return attractions.get(i);
 
@@ -124,10 +123,9 @@ public class TouristRepository {
             i++;
 
          */
-       // }return null; // ikke fundet
+        // }return null; // ikke fundet
 
     }
-
 
 
 }
