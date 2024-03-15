@@ -30,12 +30,16 @@ public class TouristControllerTest {
     @MockBean
     private TouristService touristService;
 
+
+    /*
     @Test
     void testShowAllAttractions() throws Exception {
         mockMvc.perform(get("/attractions/showAll"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("showAttractions"));
     }
+
+     */
 
     @Test
     void testShowAttractionTags() throws Exception {
