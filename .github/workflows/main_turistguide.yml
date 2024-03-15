@@ -25,6 +25,8 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
 
+
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
@@ -50,6 +52,7 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
       
     steps:
       - name: Download artifact from build job

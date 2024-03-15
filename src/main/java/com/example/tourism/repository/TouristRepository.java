@@ -2,13 +2,36 @@ package com.example.tourism.repository;
 
 
 import com.example.tourism.model.TouristAttraction;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class TouristRepository {
+
+/*
+    @Value("${spring.datasource.url}")
+    private String db_url;
+    @Value("${spring.datasource.username}")
+    private String username;
+    @Value("${spring.datasource.password}")
+    private String pwd;
+*/
+
+    public void testMethod() {
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://turistguidesql.mysql.database.azure.com/test_db", "turistguidesql", "Joakimerdum1")) {
+            String SQL = "INSERT INTO DEPT (DEPTNO,DNAME,LOC) VALUES (17,'NU','VIRKER')";
+            PreparedStatement pstmt = con.prepareStatement(SQL);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     List<TouristAttraction> attractions = new ArrayList<>(List.of(
             new TouristAttraction("Det runde tårn", "Et højt rundt tårn", List.of("Bygning")),
             new TouristAttraction("Den blå planet", "En blå planet", List.of("fisk")),
@@ -18,16 +41,18 @@ public class TouristRepository {
 
 
     public TouristAttraction createTouristAttraction(String name, String description, List<String> tags) {
-        TouristAttraction touristAttraction = new TouristAttraction(name,description, tags);
+        TouristAttraction touristAttraction = new TouristAttraction(name, description, tags);
         return touristAttraction;
     }
+
     public void addTouristAttraction(TouristAttraction touristAttraction) {
         attractions.add(touristAttraction);
     }
+
     public void deleteTouristAttractionFromList(String name) {
-        int i =0;
+        int i = 0;
         TouristAttraction foundAttraction;
-        while (i<attractions.size()) {
+        while (i < attractions.size()) {
             if (name.equals(attractions.get(i).getName())) {
                 foundAttraction = attractions.get(i);
                 attractions.remove(foundAttraction);
@@ -38,19 +63,18 @@ public class TouristRepository {
         }
 
 
-
-
-        }
-        // TODO add for multiple searchresults
+    }
+    // TODO add for multiple searchresults
 
 
     public List<TouristAttraction> getAttractions() {
         return attractions;
     }
+
     public TouristAttraction getAttractionByName(String name) {
-        int i =0;
-        TouristAttraction foundAttraction=null;
-        while (i<attractions.size()) {
+        int i = 0;
+        TouristAttraction foundAttraction = null;
+        while (i < attractions.size()) {
             if (name.equals(attractions.get(i).getName())) {
                 return attractions.get(i);
 
@@ -99,10 +123,9 @@ public class TouristRepository {
             i++;
 
          */
-       // }return null; // ikke fundet
+        // }return null; // ikke fundet
 
     }
-
 
 
 }
