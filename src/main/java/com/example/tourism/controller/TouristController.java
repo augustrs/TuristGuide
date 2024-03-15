@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,12 +19,6 @@ public class TouristController {
     public TouristController(TouristService touristService) {
         this.touristService = touristService;
     }
-    @GetMapping("/test")
-    public String testTheDb() {
-        touristService.testMethod();
-        return "redirect:/attractions/showAll";
-    }
-
     @GetMapping("/update/{name}")
     public String showUpdateAttractionForm(@PathVariable String name, Model model) {
         TouristAttraction attraction = touristService.getAttractionByName(name);
@@ -60,7 +53,7 @@ public class TouristController {
 
 
     @GetMapping("/showAll")
-    public String getAttractions (Model model) {
+public String getAttractions (Model model){
         List<TouristAttraction> attractions = touristService.getAttractions();
         model.addAttribute("attractionList",attractions);
         return "showAttractions";

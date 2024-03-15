@@ -5,19 +5,14 @@ import com.example.tourism.model.TouristAttraction;
 import com.example.tourism.repository.TouristRepository;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @Service
 public class TouristService {
     TouristRepository touristRepository;
 
-
     public TouristService(TouristRepository touristRepository) {
         this.touristRepository =touristRepository;
-    }
-    public void testMethod() {
-        touristRepository.testMethod();
     }
 
     public void addTouristAttraction(TouristAttraction attraction) {
