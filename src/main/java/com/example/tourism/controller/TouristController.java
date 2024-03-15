@@ -47,7 +47,7 @@ public class TouristController {
 
 
 
-       // TouristAttraction defaultAttraction = new TouristAttraction("name","description", List.of("tags"));
+        // TouristAttraction defaultAttraction = new TouristAttraction("name","description", List.of("tags"));
         //model.addAttribute("touristAttraction",defaultAttraction);
         //return "addAttraction";
 

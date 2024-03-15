@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class TouristService {
-     TouristRepository touristRepository;
+    TouristRepository touristRepository;
 
 
     public TouristService(TouristRepository touristRepository) {
@@ -33,8 +33,8 @@ public class TouristService {
     }
 
     //public TouristAttraction putTouristAttraction(TouristAttraction touristAttraction) {
-      //  TouristAttraction returnTouristAttraction = touristRepository.changeTouristAttraction(touristAttraction);
-       // return returnTouristAttraction;
+    //  TouristAttraction returnTouristAttraction = touristRepository.changeTouristAttraction(touristAttraction);
+    // return returnTouristAttraction;
     //}
     public void updateAttraction(TouristAttraction touristAttraction) {
         touristRepository.changeTouristAttraction(touristAttraction);
@@ -50,5 +50,4 @@ public class TouristService {
         return touristRepository.getTags();
     }
 }
-
 
