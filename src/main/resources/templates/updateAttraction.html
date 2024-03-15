@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org">
+<html lang="en" xmlns:th="https://thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-
-  <link th:href="@{/showAttraction.css}" rel="stylesheet">
+  <link th:href="@{/updateAttraction.css}" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-  <link rel="icon" href="../static/images/tour-guide.png" type="image/x-icon">
-  <title>Find All</title>
+  <link rel="icon" th:href="@{/images/tour-guide.png}" type="image/x-icon">
+  <title>Update</title>
 </head>
 <body>
 <header>
@@ -20,30 +19,47 @@
     <ul class="topnav">
       <li><a href="/">Home</a></li>
       <li><a href="/attractions/showAll">Show Attractions</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">About</a></li>
+      <li><a href="/attractions/add">Add Attraction</a></li>
     </ul>
   </nav>
-
-  <div class="header">
-    <div class="headlines">
-      <h1 class="headline1">Velkommen til attraktionslisten</h1>
-      <h3 class="headline2">Her finder du alle de smukke attraktioner i København 💅</h3>
-    </div>
-  </div>
 </header>
-<div class="container mt-4">
+
+
+<h2 class="header">Update Tourist Attraction</h2>
   <form th:action="@{/attractions/update}" th:object="${touristAttraction}" method="post">
     <!-- Input field for the name -->
-    <div class="mb-3">
-      <label for="name" class="form-label">Name</label>
-      <input type="text" class="form-control" id="name" th:field="*{name}" required>
+
+    <label for="name">Name:</label>
+      <input type="text" id="name" th:field="*{name}" required><br>
+
+      <label for="description">Description:</label>
+      <input type="text" id="description" th:field="*{description}" required><br>
+
+      <label for="id">Attraction ID:</label>
+      <input type="text" id="id" th:field="*{id}" readonly><br>
+
+    <input class="submit-button" type="submit" value="Update Attraction">
+  </form>
+
+
+<footer>
+  <div class="footer">
+    <div class="col-1">
+      <h3 class="footer-header">Contact us</h3>
+      <ul class="footer-list">
+        <li><i class="fa fa-phone"></i><a href="tel:+4525611622"> +45 88 88 88 88</a></li>
+        <li><i class="fa fa-envelope"></i><a href="mailto:joakim.bloch@hotmail.com"> turist123@guiden.org</a>
+        </li>
+      </ul>
     </div>
 
     <!-- Input field for the description -->
-    <div class="mb-3">
-      <label for="description" class="form-label">Description</label>
-      <input type="text" class="form-control" id="description" th:field="*{description}" required>
+    <div class="col-2">
+      <div class="social-links">
+        <h4 class="footer-header">Find us on</h4>
+        <a href="https://github.com/"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>
+      </div>
     </div>
 
     <!-- Multi-select dropdown for tags -->
@@ -54,13 +70,9 @@
         <option th:each="tag : ${allTags}" th:value="${tag}" th:text="${tag}"></option>
       </select>
     </div>
-
-    <button type="submit" class="btn btn-primary">Update</button>
-  </form>
-</div>
-
-<footer>
-  <!-- Your existing footer content -->
+  </div>
 </footer>
+
+
 </body>
 </html>

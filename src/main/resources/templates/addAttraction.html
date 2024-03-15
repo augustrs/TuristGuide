@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link th:href="@{/addAttraction.css}" rel="stylesheet">
     <link rel="icon" th:href="@{/images/tour-guide.png}" type="image/x-icon">
-    <title>Add Tourist Attraction</title>
+    <title>Add Attraction</title>
 
 </head>
 <body>
@@ -30,13 +30,8 @@
 <form th:action="@{/attractions/add}" th:object="${touristAttraction}" method="post">
     <label>Name: <input type="text" th:field="*{name}" required/></label><br>
     <label>Description: <input type="text" th:field="*{description}" required></label><br>
-    <label>Tags:</label><br>
-    <label><input type="checkbox" th:field="*{tags}" value="Børn"/> Børn</label>
-    <label><input type="checkbox" th:field="*{tags}" value="Turist"/> Turist</label>
-    <label><input type="checkbox" th:field="*{tags}" value="Sjov"/> Sjov</label>
-    <label><input type="checkbox" th:field="*{tags}" value="Eventyr"/> Eventyr</label>
-    <label><input type="checkbox" th:field="*{tags}" value="By"/> By</label><br>
-    <input type="submit" value="Add Attraction">
+    <label>id: <input type="number" th:field="*{id}" required/></label><br>
+    <input class="submit-button" type="submit" value="Add Attraction">
 </form>
 
 <footer>
@@ -53,7 +48,6 @@
                 <h4 class="footer-header">Find us on</h4>
                 <a href="https://github.com/"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>
-
             </div>
         </div>
     </div>
