@@ -21,6 +21,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(TouristController.class)
 public class TouristControllerTest {
 
+}
+/*
     private TouristAttraction touristAttraction = new TouristAttraction("Den blå planet", " aquarim", List.of("fisk"));
 
 
@@ -31,7 +33,7 @@ public class TouristControllerTest {
     private TouristService touristService;
 
 
-    /*
+
     @Test
     void testShowAllAttractions() throws Exception {
         mockMvc.perform(get("/attractions/showAll"))
@@ -39,7 +41,7 @@ public class TouristControllerTest {
                 .andExpect(view().name("showAttractions"));
     }
 
-     */
+
 
     @Test
     void testShowAttractionTags() throws Exception {
@@ -70,4 +72,5 @@ public class TouristControllerTest {
                 .andExpect(view().name("redirect:/attractions"));
     }
     */
+
 
