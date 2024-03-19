@@ -12,14 +12,14 @@ import java.util.List;
 @Repository
 public class TouristRepository {
 
-/*
+
     @Value("${spring.datasource.url}")
     private String db_url;
     @Value("${spring.datasource.username}")
     private String username;
     @Value("${spring.datasource.password}")
     private String pwd;
-*/
+
 
     public void testMethod() {
         try (Connection con = DriverManager.getConnection("jdbc:mysql://turistguidesql.mysql.database.azure.com/test_db", "turistguidesql", "Joakimerdum1")) {
@@ -31,6 +31,44 @@ public class TouristRepository {
         }
     }
 
+    public List<String> getTagsForAttraction(int attractionId) {
+        List<String> tags = new ArrayList<>();
+        try (Connection connection = DriverManager.getConnection(db_url, username, pwd)) {
+            String SQL = "SELECT tags.TAGNAME FROM ATTRACTIONTAGS at INNER JOIN TAGS tags ON at.TAGID = tags.TAGID WHERE at.ATTRACTIONID = ?";
+            PreparedStatement ps = connection.prepareStatement(SQL);
+            ps.setInt(1, attractionId);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                tags.add(rs.getString("TAGNAME"));
+            }
+            return tags;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public List<TouristAttraction> getAttractionAsObject() {
+        List<TouristAttraction> attractionList = new ArrayList<>();
+        try (Connection connection = DriverManager.getConnection(db_url, username, pwd)) {
+            String SQL = "SELECT * FROM ATTRACTION";
+            PreparedStatement ps = connection.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                int id = rs.getInt("ATTRACTIONID");
+                String name = rs.getString("ANAME");
+                String description = rs.getString("DESCR");
+                String location = rs.getString("LOC");
+                List<String> tags = getTagsForAttraction(id);
+                attractionList.add(TouristAttraction.createAttraction(id, name, description, location,tags));
+            }
+            return attractionList;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
 
     List<TouristAttraction> attractions = new ArrayList<>(List.of(
             new TouristAttraction("Det runde tårn", "Et højt rundt tårn", List.of("Bygning")),
@@ -40,10 +78,14 @@ public class TouristRepository {
             new TouristAttraction("Den lille havfrue", "en havfrue", List.of("Statue"))));
 
 
+
+
     public TouristAttraction createTouristAttraction(String name, String description, List<String> tags) {
         TouristAttraction touristAttraction = new TouristAttraction(name, description, tags);
         return touristAttraction;
     }
+
+
 
     public void addTouristAttraction(TouristAttraction touristAttraction) {
         attractions.add(touristAttraction);

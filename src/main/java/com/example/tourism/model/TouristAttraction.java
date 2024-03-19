@@ -5,17 +5,30 @@ import java.util.List;
 import java.util.Random;
 
 public class TouristAttraction {
+    private String location;
     private String name;
     private String description;
     private List<String> tags = new ArrayList<>();
     private int id;
     Random random = new Random();
 
-    public TouristAttraction(String name, String description,  List<String> tags) {
-        this.id= random.nextInt(10000)+1;
+    public TouristAttraction(String name, String description, List<String> tags) {
+        this.id = random.nextInt(10000) + 1;
         this.name = name;
         this.description = description;
         this.tags = tags;
+    }
+
+    public TouristAttraction(int id, String name, String description, String location, List<String> tags) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.location = location;
+        this.tags = tags;
+    }
+
+    public static TouristAttraction createAttraction(int id, String name, String description, String location, List<String> tags) {
+        return new TouristAttraction(id, name, description, location, tags);
     }
 
     public String getName() {

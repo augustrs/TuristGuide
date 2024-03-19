@@ -19,6 +19,12 @@ public class TouristController {
     public TouristController(TouristService touristService) {
         this.touristService = touristService;
     }
+
+    @GetMapping("/testtest")
+    public String testDB() {
+        touristService.getAttractionFromSQL();
+        return "redirect:/attractions/showAll";
+    }
     @GetMapping("/update/{name}")
     public String showUpdateAttractionForm(@PathVariable String name, Model model) {
         TouristAttraction attraction = touristService.getAttractionByName(name);
@@ -54,7 +60,7 @@ public class TouristController {
 
     @GetMapping("/showAll")
 public String getAttractions (Model model){
-        List<TouristAttraction> attractions = touristService.getAttractions();
+        List<TouristAttraction> attractions = touristService.getAttractionFromSQL();
         model.addAttribute("attractionList",attractions);
         return "showAttractions";
     }

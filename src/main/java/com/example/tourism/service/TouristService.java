@@ -15,6 +15,10 @@ public class TouristService {
         this.touristRepository =touristRepository;
     }
 
+    public List<TouristAttraction> getAttractionFromSQL() {
+        return touristRepository.getAttractionAsObject();
+    }
+
     public void addTouristAttraction(TouristAttraction attraction) {
         touristRepository.addTouristAttraction(attraction);
     }
