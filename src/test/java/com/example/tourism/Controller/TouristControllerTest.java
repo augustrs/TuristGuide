@@ -48,7 +48,7 @@ public class TouristControllerTest {
         mockMvc.perform(get("/attractions/tags/Den blå planet"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("tags"))
-                .andExpect(content().string(containsString("Tags for Den blå planet")));
+                .andExpect(content().string(containsString("Den blå planet tags")));
     }
 
     @Test
