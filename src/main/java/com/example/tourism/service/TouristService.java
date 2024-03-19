@@ -22,6 +22,9 @@ public class TouristService {
     public void addTouristAttraction(TouristAttraction attraction) {
         touristRepository.addTouristAttraction(attraction);
     }
+    public void deleteTouristAttractionSQL(String name) {
+        touristRepository.deleteTouristAttractionFromListSQL(name);
+    }
 
     public void deleteTouristAttraction(String name) {
         touristRepository.deleteTouristAttractionFromList(name);
@@ -42,7 +45,7 @@ public class TouristService {
         return touristRepository.getAttractionByName(name);
     }
     public List<String> getTagsForAttraction(String name){
-        return touristRepository.getTagsForAttraction(name);
+        return touristRepository.getTags(name);
     }
 
     public List<String> getTags() {

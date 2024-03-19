@@ -22,7 +22,7 @@ public class TouristRepository {
 
 
     public void testMethod() {
-        try (Connection con = DriverManager.getConnection("jdbc:mysql://turistguidesql.mysql.database.azure.com/test_db", "turistguidesql", "Joakimerdum1")) {
+        try (Connection con = DriverManager.getConnection(db_url, username, pwd)) {
             String SQL = "INSERT INTO DEPT (DEPTNO,DNAME,LOC) VALUES (17,'NU','VIRKER')";
             PreparedStatement pstmt = con.prepareStatement(SQL);
             pstmt.executeUpdate();
@@ -31,21 +31,6 @@ public class TouristRepository {
         }
     }
 
-    public List<String> getTagsForAttraction(int attractionId) {
-        List<String> tags = new ArrayList<>();
-        try (Connection connection = DriverManager.getConnection(db_url, username, pwd)) {
-            String SQL = "SELECT tags.TAGNAME FROM ATTRACTIONTAGS at INNER JOIN TAGS tags ON at.TAGID = tags.TAGID WHERE at.ATTRACTIONID = ?";
-            PreparedStatement ps = connection.prepareStatement(SQL);
-            ps.setInt(1, attractionId);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()) {
-                tags.add(rs.getString("TAGNAME"));
-            }
-            return tags;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
     public List<TouristAttraction> getAttractionAsObject() {
         List<TouristAttraction> attractionList = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(db_url, username, pwd)) {
@@ -66,6 +51,94 @@ public class TouristRepository {
             throw new RuntimeException(e);
         }
 
+
+    }
+    public List<String> getTags(String name) {
+        List<TouristAttraction> attractionList = getAttractionAsObject();
+        for (TouristAttraction touristAttraction : attractionList) {
+            if (touristAttraction.getName().equalsIgnoreCase(name)) {
+                return touristAttraction.getTags();
+
+            }
+        }
+        return null;
+    }
+
+
+
+
+
+
+    public List<String> getTagsForAttraction(int attractionId) {
+        //int attractionId = findTouristAttractionFromListSQL(id);
+        List<String> tags = new ArrayList<>();
+        try (Connection connection = DriverManager.getConnection(db_url, username, pwd)) {
+            String SQL = "SELECT tags.TAGNAME FROM ATTRACTIONTAGS at INNER JOIN TAGS tags ON at.TAGID = tags.TAGID WHERE at.ATTRACTIONID = ?";
+            PreparedStatement ps = connection.prepareStatement(SQL);
+            ps.setInt(1, attractionId);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                tags.add(rs.getString("TAGNAME"));
+            }
+            return tags;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+    public int findTouristTagFromListSQL(String name) {
+
+        try (Connection connection = DriverManager.getConnection(db_url, username, pwd)) {
+            String SQL = "SELECT * FROM TAGS WHERE TAGNAME = ?";
+            PreparedStatement ps = connection.prepareStatement(SQL);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+
+            int id = rs.getInt("TAGID");
+            return id;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+    public int findTouristAttractionFromListSQL(String name) {
+
+        try (Connection connection = DriverManager.getConnection(db_url, username, pwd)) {
+            String SQL = "SELECT * FROM ATTRACTION WHERE ANAME = ?";
+            PreparedStatement ps = connection.prepareStatement(SQL);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+
+            int id = rs.getInt("ATTRACTIONID");
+            return id;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+    public void deleteTouristAttractionFromListSQL(String name) {
+        try (Connection connection = DriverManager.getConnection(db_url, username, pwd)) {
+            int id = findTouristAttractionFromListSQL(name);
+            if (id != -1) {
+                String deleteAttractionTagsSQL = "DELETE FROM ATTRACTIONTAGS WHERE ATTRACTIONID = ?";
+                PreparedStatement psAttractionTags = connection.prepareStatement(deleteAttractionTagsSQL);
+                psAttractionTags.setInt(1, id);
+                psAttractionTags.executeUpdate();
+
+                String deleteAttractionSQL = "DELETE FROM ATTRACTION WHERE ATTRACTIONID = ?";
+                PreparedStatement psAttraction = connection.prepareStatement(deleteAttractionSQL);
+                psAttraction.setInt(1, id);
+                psAttraction.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -126,14 +199,6 @@ public class TouristRepository {
         return null;
     }
 
-    public List<String> getTagsForAttraction(String name) {
-        TouristAttraction attraction = getAttractionByName(name);
-        if (attraction != null) {
-            return attraction.getTags();
-        } else
-            return null;
-
-    }
 
     public List<String> getTags() {
         List<String> tags = new ArrayList<>();

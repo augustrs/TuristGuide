@@ -67,6 +67,7 @@ public String getAttractions (Model model){
 
     @GetMapping("/tags/{name}")
     public String showAttractionTags(@PathVariable String name, Model model) {
+
         List<String> tags = touristService.getTagsForAttraction(name);
         model.addAttribute("tags", tags);
         return "tags";
@@ -74,7 +75,7 @@ public String getAttractions (Model model){
 
     @PostMapping ("/delete/{name}")
     public String deleteTouristAttraction(@PathVariable String name) {
-        touristService.deleteTouristAttraction(name);
+        touristService.deleteTouristAttractionSQL(name);
         return "redirect:/attractions/showAll";
     }
 

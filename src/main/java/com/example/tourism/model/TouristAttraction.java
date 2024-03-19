@@ -66,4 +66,5 @@ public class TouristAttraction {
     public void setTags(List<String> tags) {
         this.tags = tags;
     }
+
 }
