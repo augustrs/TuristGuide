@@ -12,44 +12,36 @@ public class TouristService {
     TouristRepository touristRepository;
 
     public TouristService(TouristRepository touristRepository) {
-        this.touristRepository =touristRepository;
+        this.touristRepository = touristRepository;
     }
 
     public List<TouristAttraction> getAttractionFromSQL() {
         return touristRepository.getAttractionAsObject();
     }
 
-    public void addTouristAttraction(TouristAttraction attraction) {
-        touristRepository.addTouristAttraction(attraction);
+    public void updateAttraction(TouristAttraction attractionToUpdate) {
+        touristRepository.updateAttraction(attractionToUpdate);
     }
+
+
     public void deleteTouristAttractionSQL(String name) {
         touristRepository.deleteTouristAttractionFromListSQL(name);
     }
 
-    public void deleteTouristAttraction(String name) {
-        touristRepository.deleteTouristAttractionFromList(name);
-    }
-
-    public List<TouristAttraction> getAttractions() {
-        return touristRepository.getAttractions();
-    }
 
     //public TouristAttraction putTouristAttraction(TouristAttraction touristAttraction) {
     //  TouristAttraction returnTouristAttraction = touristRepository.changeTouristAttraction(touristAttraction);
     // return returnTouristAttraction;
     //}
-    public void updateAttraction(TouristAttraction touristAttraction) {
-        touristRepository.changeTouristAttraction(touristAttraction);
-    }
+
     public TouristAttraction getAttractionByName(String name) {
         return touristRepository.getAttractionByName(name);
     }
-    public List<String> getTagsForAttraction(String name){
+
+    public List<String> getTagsForAttraction(String name) {
         return touristRepository.getTags(name);
     }
 
-    public List<String> getTags() {
-        return touristRepository.getTags();
-    }
+
 }
 

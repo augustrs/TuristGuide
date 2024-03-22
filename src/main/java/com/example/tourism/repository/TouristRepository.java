@@ -37,13 +37,13 @@ public class TouristRepository {
             String SQL = "SELECT * FROM ATTRACTION";
             PreparedStatement ps = connection.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 int id = rs.getInt("ATTRACTIONID");
                 String name = rs.getString("ANAME");
                 String description = rs.getString("DESCR");
                 String location = rs.getString("LOC");
                 List<String> tags = getTagsForAttraction(id);
-                attractionList.add(TouristAttraction.createAttraction(id, name, description, location,tags));
+                attractionList.add(TouristAttraction.createAttraction(id, name, description, location, tags));
             }
             return attractionList;
 
@@ -53,6 +53,7 @@ public class TouristRepository {
 
 
     }
+
     public List<String> getTags(String name) {
         List<TouristAttraction> attractionList = getAttractionAsObject();
         for (TouristAttraction touristAttraction : attractionList) {
@@ -65,10 +66,6 @@ public class TouristRepository {
     }
 
 
-
-
-
-
     public List<String> getTagsForAttraction(int attractionId) {
         //int attractionId = findTouristAttractionFromListSQL(id);
         List<String> tags = new ArrayList<>();
@@ -77,7 +74,7 @@ public class TouristRepository {
             PreparedStatement ps = connection.prepareStatement(SQL);
             ps.setInt(1, attractionId);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 tags.add(rs.getString("TAGNAME"));
             }
             return tags;
@@ -85,7 +82,6 @@ public class TouristRepository {
             throw new RuntimeException(e);
         }
     }
-
 
 
     public int findTouristTagFromListSQL(String name) {
@@ -105,6 +101,7 @@ public class TouristRepository {
 
 
     }
+
     public int findTouristAttractionFromListSQL(String name) {
 
         try (Connection connection = DriverManager.getConnection(db_url, username, pwd)) {
@@ -122,6 +119,7 @@ public class TouristRepository {
 
 
     }
+
     public void deleteTouristAttractionFromListSQL(String name) {
         try (Connection connection = DriverManager.getConnection(db_url, username, pwd)) {
             int id = findTouristAttractionFromListSQL(name);
@@ -143,81 +141,53 @@ public class TouristRepository {
     }
 
 
-    List<TouristAttraction> attractions = new ArrayList<>(List.of(
-            new TouristAttraction("Det runde tårn", "Et højt rundt tårn", List.of("Bygning")),
-            new TouristAttraction("Den blå planet", "En blå planet", List.of("fisk")),
-            new TouristAttraction("Københavns Zoologiske have", "Et sted fyldt med dyr", List.of("Dyr")),
-            new TouristAttraction("Operahuset", "Et koncerthus", List.of("Musik")),
-            new TouristAttraction("Den lille havfrue", "en havfrue", List.of("Statue"))));
 
 
 
 
-    public TouristAttraction createTouristAttraction(String name, String description, List<String> tags) {
-        TouristAttraction touristAttraction = new TouristAttraction(name, description, tags);
-        return touristAttraction;
-    }
 
 
 
-    public void addTouristAttraction(TouristAttraction touristAttraction) {
-        attractions.add(touristAttraction);
-    }
-
-    public void deleteTouristAttractionFromList(String name) {
-        int i = 0;
-        TouristAttraction foundAttraction;
-        while (i < attractions.size()) {
-            if (name.equals(attractions.get(i).getName())) {
-                foundAttraction = attractions.get(i);
-                attractions.remove(foundAttraction);
 
 
-            }
-            i++;
-        }
-
-
-    }
-    // TODO add for multiple searchresults
-
-
-    public List<TouristAttraction> getAttractions() {
-        return attractions;
-    }
 
     public TouristAttraction getAttractionByName(String name) {
-        int i = 0;
+        List<TouristAttraction> attractionList = getAttractionAsObject();
         TouristAttraction foundAttraction = null;
-        while (i < attractions.size()) {
-            if (name.equals(attractions.get(i).getName())) {
-                return attractions.get(i);
+        for (TouristAttraction attraction : attractionList) {
+            if (name.equals(attraction.getName())) {
+                foundAttraction = attraction;
+            }
 
             }
-            i++;
-        }
-        return null;
+        return foundAttraction;
     }
 
 
-    public List<String> getTags() {
-        List<String> tags = new ArrayList<>();
-        for (TouristAttraction attraction : attractions) {
-            tags.addAll(attraction.getTags());
+    public void updateAttraction(TouristAttraction attractionToUpdate) {
+        int id = attractionToUpdate.getId();
+        String name = attractionToUpdate.getName();
+        String description = attractionToUpdate.getDescription();
+
+        try (Connection connection = DriverManager.getConnection(db_url, username, pwd)) {
+            String SQL = "UPDATE ATTRACTION set ANAME = ?, DESCR = ? WHERE ATTRACTIONID = ?";
+            PreparedStatement ps = connection.prepareStatement(SQL);
+            ps.setString(1, name);
+            ps.setString(2, description);
+            ps.setInt(3, id);
+            ps.executeUpdate();
+           // System.out.println(ps.executeUpdate());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        return tags;
     }
 
-    public void changeTouristAttraction(TouristAttraction updateAttraction) {
-        //Overskriv eksisterende message
-        for (TouristAttraction touristAttraction : attractions) {
-            if (touristAttraction.getName().equals(updateAttraction.getName())) {
-                touristAttraction.setDescription(updateAttraction.getDescription());
-                touristAttraction.setTags(updateAttraction.getTags());
-            }
 
 
-        }
+
+
+
+
 
         // find attraction i attractions
         /*
@@ -235,4 +205,3 @@ public class TouristRepository {
     }
 
 
-}

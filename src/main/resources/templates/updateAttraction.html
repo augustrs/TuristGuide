@@ -29,14 +29,14 @@
   <form th:action="@{/attractions/update}" th:object="${touristAttraction}" method="post">
     <!-- Input field for the name -->
 
-    <label for="name">Name:</label>
-      <input type="text" id="name" th:field="*{name}" required><br>
+      <label for="name">Name:</label>
+      <input type="text" id="name" th:field="${touristAttraction.name}" required><br>
 
       <label for="description">Description:</label>
-      <input type="text" id="description" th:field="*{description}" required><br>
+      <input type="text" id="description" th:field="${touristAttraction.description}" required><br>
 
       <label for="id">Attraction ID:</label>
-      <input type="text" id="id" th:field="*{id}" readonly><br>
+      <input type="text" id="id" th:field="${touristAttraction.id}" readonly><br>
 
     <input class="submit-button" type="submit" value="Update Attraction">
   </form>
@@ -65,7 +65,7 @@
     <!-- Multi-select dropdown for tags -->
     <div class="mb-3">
       <label for="tags" class="form-label">Tags</label>
-      <select multiple class="form-select" id="tags" th:field="*{tags}">
+      <select multiple class="form-select" id="tags" th:field="*{touristAttraction.tags}">
         <!-- Populate options dynamically based on available tags -->
         <option th:each="tag : ${allTags}" th:value="${tag}" th:text="${tag}"></option>
       </select>

@@ -12,12 +12,7 @@ public class TouristAttraction {
     private int id;
     Random random = new Random();
 
-    public TouristAttraction(String name, String description, List<String> tags) {
-        this.id = random.nextInt(10000) + 1;
-        this.name = name;
-        this.description = description;
-        this.tags = tags;
-    }
+
 
     public TouristAttraction(int id, String name, String description, String location, List<String> tags) {
         this.id = id;
@@ -67,4 +62,7 @@ public class TouristAttraction {
         this.tags = tags;
     }
 
+    public String getLocation() {
+        return location;
+    }
 }

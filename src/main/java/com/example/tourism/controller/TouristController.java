@@ -31,12 +31,16 @@ public class TouristController {
         model.addAttribute("touristAttraction", attraction);
         return "updateAttraction";
     }
+
+
     @PostMapping("/update")
     public String updateTouristAttraction(@ModelAttribute TouristAttraction touristAttraction) {
         touristService.updateAttraction(touristAttraction);
         return "redirect:/attractions/showAll";
     }
 
+
+    /*
     @GetMapping("/add")
     public String showAddAttractionForm(Model model) {
         TouristAttraction defaultAttraction = new TouristAttraction("name","description", List.of("tags"));
@@ -44,18 +48,22 @@ public class TouristController {
         model.addAttribute("tags", Collections.emptyList());
         return "addAttraction";
 
+     */
+
 
 
         // TouristAttraction defaultAttraction = new TouristAttraction("name","description", List.of("tags"));
         //model.addAttribute("touristAttraction",defaultAttraction);
         //return "addAttraction";
 
-    }
+    /*
     @PostMapping("/add")
     public String addTouristAttraction(@ModelAttribute TouristAttraction touristAttraction) {
         touristService.addTouristAttraction(touristAttraction);
         return "redirect:/attractions/showAll";
     }
+
+     */
 
 
     @GetMapping("/showAll")
