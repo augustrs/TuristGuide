@@ -20,11 +20,6 @@ public class TouristController {
         this.touristService = touristService;
     }
 
-    @GetMapping("/testtest")
-    public String testDB() {
-        touristService.getAttractionFromSQL();
-        return "redirect:/attractions/showAll";
-    }
     @GetMapping("/update/{name}")
     public String showUpdateAttractionForm(@PathVariable String name, Model model) {
         TouristAttraction attraction = touristService.getAttractionByName(name);

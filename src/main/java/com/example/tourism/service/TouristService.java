@@ -32,11 +32,6 @@ public class TouristService {
     }
 
 
-    //public TouristAttraction putTouristAttraction(TouristAttraction touristAttraction) {
-    //  TouristAttraction returnTouristAttraction = touristRepository.changeTouristAttraction(touristAttraction);
-    // return returnTouristAttraction;
-    //}
-
     public TouristAttraction getAttractionByName(String name) {
         return touristRepository.getAttractionByName(name);
     }

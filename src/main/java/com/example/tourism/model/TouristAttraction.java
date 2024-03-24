@@ -10,7 +10,6 @@ public class TouristAttraction {
     private String description;
     private List<String> tags = new ArrayList<>();
     private int id;
-    Random random = new Random();
 
 
 

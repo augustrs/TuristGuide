@@ -221,20 +221,6 @@ public class TouristRepository {
     }
 
 
-
-    // find attraction i attractions
-        /*
-        int i=0;
-        while (i < attractions.size()) {
-            if (touristAttraction.getId()==attractions.get(i).getId()){
-                attractions.set(i,touristAttraction);
-            return touristAttraction;
-            }
-            i++;
-
-         */
-        // }return null; // ikke fundet
-
     }
 
 
