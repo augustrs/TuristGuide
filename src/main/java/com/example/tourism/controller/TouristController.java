@@ -40,15 +40,15 @@ public class TouristController {
     }
 
 
-    /*
+
     @GetMapping("/add")
     public String showAddAttractionForm(Model model) {
-        TouristAttraction defaultAttraction = new TouristAttraction("name","description", List.of("tags"));
+        TouristAttraction defaultAttraction = new TouristAttraction(,"name","description","location", List.of("tags"));
         model.addAttribute("touristAttraction", defaultAttraction);
         model.addAttribute("tags", Collections.emptyList());
         return "addAttraction";
 
-     */
+
 
 
 

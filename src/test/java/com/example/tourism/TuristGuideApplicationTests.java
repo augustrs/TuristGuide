@@ -22,7 +22,7 @@ class TuristGuideApplicationTests {
     private TouristRepository repository;
 
 
-/*
+
     @Test
     void contextLoads() {
         assertThat(controller).isNotNull();
@@ -30,7 +30,7 @@ class TuristGuideApplicationTests {
         assertThat(repository).isNotNull();
     }
     
- */
+
 
 
 
