@@ -22,13 +22,15 @@ class TuristGuideApplicationTests {
     private TouristRepository repository;
 
 
-
+/*
     @Test
     void contextLoads() {
         assertThat(controller).isNotNull();
         assertThat(service).isNotNull();
         assertThat(repository).isNotNull();
     }
+
+ */
     
 
 

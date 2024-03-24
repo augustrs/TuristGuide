@@ -21,11 +21,14 @@ public class TouristRepository {
     private String pwd;
 
 
-    public void testMethod() {
+    public int findHighestId() {
         try (Connection con = DriverManager.getConnection(db_url, username, pwd)) {
-            String SQL = "INSERT INTO DEPT (DEPTNO,DNAME,LOC) VALUES (17,'NU','VIRKER')";
+            String SQL = "SELECT MAX(ATTRACTIONID) FROM ATTRACTION";
             PreparedStatement pstmt = con.prepareStatement(SQL);
-            pstmt.executeUpdate();
+            ResultSet rs = pstmt.executeQuery();
+            rs.next();
+            int highestId = rs.getInt("MAX(ATTRACTIONID)") + 1;
+            return highestId;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -182,14 +185,44 @@ public class TouristRepository {
         }
     }
 
+    public void addAttraction(TouristAttraction touristAttraction) {
+        try (Connection connection = DriverManager.getConnection(db_url, username, pwd)) {
+            String SQL = "INSERT INTO ATTRACTION (ANAME, LOC, DESCR) VALUES (?, ?, ?)";
+            PreparedStatement ps = connection.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, touristAttraction.getName());
+            ps.setString(2, touristAttraction.getLocation());
+            ps.setString(3, touristAttraction.getDescription());
+            ps.executeUpdate();
+
+            ResultSet generatedKeys = ps.getGeneratedKeys();
+            int attractionId = -1;
+            if (generatedKeys.next()) {
+                attractionId = generatedKeys.getInt(1);
+            } else {
+                throw new SQLException("Creating attraction failed, no ID obtained.");
+            }
+
+            List<String> tags = touristAttraction.getTags();
+            if (tags != null && !tags.isEmpty()) {
+                String tagSQL = "INSERT INTO ATTRACTIONTAGS (TAGID, ATTRACTIONID) VALUES (?, ?)";
+                for (String tagName : tags) {
+                    int tagId = findTouristTagFromListSQL(tagName);
+                    if (tagId != -1) {
+                        PreparedStatement tagPS = connection.prepareStatement(tagSQL);
+                        tagPS.setInt(1, tagId);
+                        tagPS.setInt(2, attractionId);
+                        tagPS.executeUpdate();
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 
-
-
-
-
-        // find attraction i attractions
+    // find attraction i attractions
         /*
         int i=0;
         while (i < attractions.size()) {

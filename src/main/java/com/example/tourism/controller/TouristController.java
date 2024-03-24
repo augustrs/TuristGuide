@@ -43,10 +43,17 @@ public class TouristController {
 
     @GetMapping("/add")
     public String showAddAttractionForm(Model model) {
-        TouristAttraction defaultAttraction = new TouristAttraction(,"name","description","location", List.of("tags"));
+        int id = touristService.getHighestId();
+        TouristAttraction defaultAttraction = new TouristAttraction(id, "name", "description", "location", List.of("tags"));
         model.addAttribute("touristAttraction", defaultAttraction);
         model.addAttribute("tags", Collections.emptyList());
         return "addAttraction";
+    }
+    @PostMapping("/add")
+    public String addTouristAttraction(@ModelAttribute TouristAttraction touristAttraction) {
+        touristService.addTouristAttraction(touristAttraction);
+        return "redirect:/attractions/showAll";
+    }
 
 
 

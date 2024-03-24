@@ -30,7 +30,16 @@
 <form th:action="@{/attractions/add}" th:object="${touristAttraction}" method="post">
     <label>Name: <input type="text" th:field="*{name}" required/></label><br>
     <label>Description: <input type="text" th:field="*{description}" required></label><br>
-    <label>id: <input type="number" th:field="*{id}" required/></label><br>
+    <label>Location: <input type="text" th:field="*{location}" required></label><br>
+    <label>id: <input type="number" th:field="*{id}" readonly/></label><br>
+    <label>Select Tags:</label><br>
+    <input type="checkbox" name="tags" value="kids"> Kids<br>
+    <input type="checkbox" name="tags" value="tourist"> Tourist<br>
+    <input type="checkbox" name="tags" value="sjov"> Sjov (Fun)<br>
+
+
+
+
     <input class="submit-button" type="submit" value="Add Attraction">
 </form>
 

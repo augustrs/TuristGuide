@@ -18,6 +18,9 @@ public class TouristService {
     public List<TouristAttraction> getAttractionFromSQL() {
         return touristRepository.getAttractionAsObject();
     }
+    public int getHighestId() {
+        return  touristRepository.findHighestId();
+    }
 
     public void updateAttraction(TouristAttraction attractionToUpdate) {
         touristRepository.updateAttraction(attractionToUpdate);
@@ -43,5 +46,8 @@ public class TouristService {
     }
 
 
+    public void addTouristAttraction(TouristAttraction touristAttraction) {
+        touristRepository.addAttraction(touristAttraction);
+    }
 }
 
