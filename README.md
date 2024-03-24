@@ -1,2 +1,10 @@
 # Turistguide
-[Azure](https://turistguide.azurewebsites.net/)
+[Azure/Deployed website](https://turistguide.azurewebsites.net/)  
+[Link to SQL Script](https://github.com/augustrs/TuristGuide/blob/main/src/main/resources/turistguide.sql)  
+## ER-MODEL:  
+![Example Image](https://github.com/augustrs/TuristGuide/blob/main/ermodel.jpg)
+
+## Qodana code inspection:  
+![Example Image](https://github.com/augustrs/TuristGuide/blob/main/qodana%20screenshot.png)
+
+
