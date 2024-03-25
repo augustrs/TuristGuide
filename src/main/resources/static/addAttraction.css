@@ -175,6 +175,27 @@ input {
     margin-bottom: 10px;
 }
 
+.fieldset {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin-left: 250px;
+    margin-bottom: 10px;
+}
+
+.fieldset p {
+    margin: 0 0 0 15px;
+}
+
+.input-box {
+    margin-right: 10px;
+}
+
 .submit-button {
     margin-bottom: 40px;
+}
+
+.submit-button:hover {
+    cursor: pointer;
 }

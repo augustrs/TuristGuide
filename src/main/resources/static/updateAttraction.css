@@ -180,3 +180,7 @@ input {
     margin-bottom: 40px;
     margin-top: 20px;
 }
+
+.submit-button:hover {
+    cursor: pointer;
+}

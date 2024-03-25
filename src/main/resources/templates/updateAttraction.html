@@ -41,6 +41,12 @@
     <input class="submit-button" type="submit" value="Update Attraction">
   </form>
 
+<div class="mb-3" style="display: none;">
+  <label for="tags" class="form-label">Tags</label>
+  <select multiple class="form-select" id="tags" th:field="*{touristAttraction.tags}">
+    <option th:each="tag : ${allTags}" th:value="${tag}" th:text="${tag}"></option>
+  </select>
+</div>
 
 <footer>
   <div class="footer">
@@ -60,15 +66,6 @@
         <a href="https://github.com/"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>
       </div>
-    </div>
-
-    <!-- Multi-select dropdown for tags -->
-    <div class="mb-3">
-      <label for="tags" class="form-label">Tags</label>
-      <select multiple class="form-select" id="tags" th:field="*{touristAttraction.tags}">
-        <!-- Populate options dynamically based on available tags -->
-        <option th:each="tag : ${allTags}" th:value="${tag}" th:text="${tag}"></option>
-      </select>
     </div>
   </div>
 </footer>
