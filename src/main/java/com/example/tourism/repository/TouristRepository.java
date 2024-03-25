@@ -88,22 +88,22 @@ public class TouristRepository {
 
 
     public int findTouristTagFromListSQL(String name) {
-
         try (Connection connection = DriverManager.getConnection(db_url, username, pwd)) {
             String SQL = "SELECT * FROM TAGS WHERE TAGNAME = ?";
             PreparedStatement ps = connection.prepareStatement(SQL);
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
-            rs.next();
+            if (rs.next()) {
+                return rs.getInt("TAGID");
+            } else {
 
-            int id = rs.getInt("TAGID");
-            return id;
+                return -1;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
     }
+
 
     public int findTouristAttractionFromListSQL(String name) {
 
@@ -216,9 +216,10 @@ public class TouristRepository {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error while adding attraction: " + e.getMessage(), e);
         }
     }
+
 
 
     }
